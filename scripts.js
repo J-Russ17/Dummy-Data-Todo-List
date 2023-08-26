@@ -26,21 +26,55 @@
         console.log(arrayOfTodos)
     }
     
+    
     const populateTodos = () => {
         const orderedList = document.getElementById("todo-list")
-
-
+        
+        
         const arrLoop = (arr) => {
             for (i = 0; i < arrayOfTodos.length; i++) {
+                
+                
                 console.log(arr[i]);
-                const newTodo = document.createElement("LI");
                 const textNode = document.createTextNode(arrayOfTodos[i].title)
+                const newTodo = document.createElement("LI");
                 orderedList.appendChild(newTodo)
                 newTodo.appendChild(textNode)
                 
             }
         }
-
+        
+        
+        
+        arrLoop(arrayOfTodos)
+        
+    }
     
-    arrLoop(arrayOfTodos)
+    const clearEntry = () => {
+
+        const orderedFilterList = document.getElementById("todo-list")
+        
+        orderedFilterList.innerHTML = '';
+
+        
+
+        const userIdNumber = parseInt(document.getElementById("userId").value);
+        const filterTodos = arrayOfTodos.filter(number => number.userId === userIdNumber)
+
+        const filteredLoop = (array) => {
+        for (i=0; i < array.length; i++) {
+
+            console.log(array[i]);
+            
+            const todo = array[i];
+            const newFilterTodo = document.createElement("LI")
+            const textFilterNode = document.createTextNode(todo.title)
+            orderedFilterList.appendChild(newFilterTodo)
+            newFilterTodo.appendChild(textFilterNode)
+    }
+    
+    }
+
+    filteredLoop(filterTodos)
 }
+
